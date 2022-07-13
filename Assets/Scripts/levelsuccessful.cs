@@ -23,14 +23,13 @@ public class levelsuccessful : MonoBehaviour
     {
         if ((collision.gameObject.tag == "Player") && (Player.GetComponent<Rigidbody2D>().velocity.y == 0))
         {
-            Debug.Log("Player win");
-            Invoke("Restart", 3);
+            Invoke("Restart", 1);
         }
     }
 
     void Restart()
     {
-        Debug.Log("Restarted (win)");
         SceneManager.LoadScene("level1");
+        Invoke("Restarted", 0.2f);
     }
 }

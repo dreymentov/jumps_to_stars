@@ -8,10 +8,15 @@ public class gameManager1 : MonoBehaviour
 
     public GameObject Menu;
     public GameObject player;
+    public GameObject platform;
+    public GameObject platformToWin;
+
+    public int level1 = 7;
 
     // Start is called before the first frame update
     void Start()
     {
+        Startlevel();  
     }
 
     // Update is called once per frame
@@ -40,5 +45,30 @@ public class gameManager1 : MonoBehaviour
     public void StartGame()
     {
         player.GetComponent<player_Movements>().gaming = true;
+
+    }
+
+    public void Startlevel()
+    {
+        int randomX = 0;
+
+        for (int i = 0; i < level1; i++)
+        {
+            if(i == 0)
+            {
+                platform.transform.position = new Vector2(randomX, i * 3f);
+            }
+            else
+            platform.transform.position = new Vector2(randomX + Random.Range(-4, 4), i * 3f);
+            Instantiate(platform, platform.transform);
+        }
+
+        platformToWin.transform.position = new Vector2(randomX + Random.Range(-4, 4), level1 * 3f);
+        Instantiate(platformToWin, platformToWin.transform);
+    }
+
+    public void Restarted()
+    {
+        Startlevel();
     }
 }
