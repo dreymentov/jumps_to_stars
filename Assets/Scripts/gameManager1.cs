@@ -8,7 +8,7 @@ public class gameManager1 : MonoBehaviour
 
     public GameObject Menu;
     public GameObject player;
-    public GameObject platform;
+    public GameObject platforms;
     public GameObject platformToWin;
 
     public int level1 = 7;
@@ -56,11 +56,11 @@ public class gameManager1 : MonoBehaviour
         {
             if(i == 0)
             {
-                platform.transform.position = new Vector2(randomX, i * 3f);
+                platforms.transform.position = new Vector2(randomX, i * 3f);
             }
             else
-            platform.transform.position = new Vector2(randomX + Random.Range(-4, 4), i * 3f);
-            Instantiate(platform, platform.transform);
+            platforms.transform.position = new Vector2(randomX + Random.Range(-4, 4), i * 3f);
+            Instantiate(platforms, platforms.transform);
         }
 
         platformToWin.transform.position = new Vector2(randomX + Random.Range(-4, 4), level1 * 3f);
