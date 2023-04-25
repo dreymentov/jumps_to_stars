@@ -7,9 +7,10 @@ public class gameManager1 : MonoBehaviour
 {
 
     public GameObject Menu;
-    public GameObject player;
-    public GameObject platforms;
-    public GameObject platformToWin;
+    public GameObject Player;
+    public GameObject Platforms;
+    public GameObject PlatformToWin;
+    public Vector2 Pos2;
 
     public int level1 = 7;
 
@@ -22,11 +23,11 @@ public class gameManager1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player.GetComponent<player_Movements>().gaming == true)
+        if (Player.GetComponent<player_Movements>().gaming == true)
         {
             Menu.SetActive(false);
         }
-        if (player.GetComponent<player_Movements>().gaming == false)
+        if (Player.GetComponent<player_Movements>().gaming == false)
         {
             Menu.SetActive(true);
         }
@@ -44,7 +45,7 @@ public class gameManager1 : MonoBehaviour
 
     public void StartGame()
     {
-        player.GetComponent<player_Movements>().gaming = true;
+        Player.GetComponent<player_Movements>().gaming = true;
 
     }
 
@@ -56,15 +57,21 @@ public class gameManager1 : MonoBehaviour
         {
             if(i == 0)
             {
-                platforms.transform.position = new Vector2(randomX, i * 3f);
+                Pos2 = new Vector2(randomX, i * 3f);
             }
             else
-            platforms.transform.position = new Vector2(randomX + Random.Range(-4, 4), i * 3f);
-            Instantiate(platforms, platforms.transform);
+                Pos2 = new Vector2(randomX + Random.Range(-4, 4), i * 3f);
+
+            Platforms.transform.position = Pos2;
+
+            Instantiate(Platforms);
         }
 
-        platformToWin.transform.position = new Vector2(randomX + Random.Range(-4, 4), level1 * 3f);
-        Instantiate(platformToWin, platformToWin.transform);
+        Pos2 = new Vector2(randomX + Random.Range(-4, 4), level1 * 3f);
+
+        PlatformToWin.transform.position = Pos2;
+
+        Instantiate(PlatformToWin);
     }
 
     public void Restarted()
